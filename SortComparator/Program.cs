@@ -15,6 +15,7 @@ namespace SortComparator
                 case '1':
                     TableCreation table = new TableCreation();
                     var run = new Runner();
+
                     run.Run();
                     table.Create(stoper.times);
                     break;

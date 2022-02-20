@@ -1,61 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Threading.Tasks;
 namespace SortComparator
 {
     class Runner
     {
+        public int anwser;
         public static double max_B = 0;
         public void Run()
         {
             var randomNumbers = new QuanInizalition();
+            var call = new DoubleTrouble();
             var quan = randomNumbers.Quan(200);
-            var merge = new Merge();
-            var shell = new Shell();
-            var comb = new Comb();
-            var bucket = new Bucket();
-            var quick = new Quick();
-            var bubble = new Bubble();
 
+            Console.WriteLine("tell me how big table you want");
+            var number = Console.ReadLine();
+            Task getnumber = Task.Run(() =>
+            {
+                Console.WriteLine("tell me how big table you want");
+                var number = Console.ReadLine();
+                if (Int32.TryParse(number, out this.anwser) == false)
+                {
+                    return;
+                }
+            }
+            );
+            getnumber.Wait();
 
-            var copy = quan;
-            double clock1 = DateTime.Now.Ticks;
-            merge.SortMerge(copy, 0, quan.Length - 1);
-            double clock2 = DateTime.Now.Ticks;
-            Program.stoper.times["merge"][1] = clock2 - clock1;
-
-            copy = quan;
-            clock1 = DateTime.Now.Ticks;
-            shell.ShellSort(copy);
-            clock2 = DateTime.Now.Ticks;
-            Program.stoper.times["shell"][1] = clock2 - clock1;
-
-            copy = quan;
-            clock1 = DateTime.Now.Ticks;
-            comb.CombSort(copy);
-            clock2 = DateTime.Now.Ticks;
-            Program.stoper.times["comb"][1] = clock2 - clock1;
-
-            copy = quan;
-            clock1 = DateTime.Now.Ticks;
-            bucket.BucketSort(copy,max_B);
-            clock2 = DateTime.Now.Ticks;
-            Program.stoper.times["bucket"][1] = clock2 - clock1;
-
-            //copy = quan;
-            //clock1 = DateTime.Now.Millisecond;
-            //quick.QuickSort(copy,0,quan.Length);
-            //clock2 = DateTime.Now.Millisecond;
-            //Program.stoper.times["quick"][1] = clock2 - clock1;
-
-            copy = quan;
-            clock1 = DateTime.Now.Ticks;
-            bubble.BubbleSort(copy);
-            clock2 = DateTime.Now.Ticks;
-            Program.stoper.times["bubble"][1] = clock2 - clock1;
-
-
+            call.caller(quan, 0);
+            quan = randomNumbers.Quan(500);
+            call.caller(quan, 1);
+            quan = randomNumbers.Quan(1000);
+            call.caller(quan, 2);
+            quan = randomNumbers.Quan(this.anwser);
+            call.caller(quan, 3);
         }
     }
 }
