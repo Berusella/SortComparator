@@ -15,14 +15,6 @@ namespace SortComparator
             {
                 QuickSort(buckets[i], 0, buckets[i].Count - 1);
             }
-            Console.WriteLine("wynik:");
-            for (var i = 1; i < buckets.Keys.Count; i++)
-            {
-                foreach (var item in buckets[i])
-                {
-                    Console.WriteLine(item);
-                }
-            }
         }
         private void BucketsCreation(double max, int[] table, Dictionary<int, List<int>> buckets)
         {

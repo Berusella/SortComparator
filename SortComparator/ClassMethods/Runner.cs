@@ -20,39 +20,39 @@ namespace SortComparator
 
 
             var copy = quan;
-            var clock1 = DateTime.Now.Millisecond;
+            double clock1 = DateTime.Now.Ticks;
             merge.SortMerge(copy, 0, quan.Length - 1);
-            var clock2 = DateTime.Now.Millisecond;
+            double clock2 = DateTime.Now.Ticks;
             Program.stoper.times["merge"][1] = clock2 - clock1;
 
             copy = quan;
-            clock1 = DateTime.Now.Millisecond;
-            shell.ShellSort(copy);     
-            clock2 = DateTime.Now.Millisecond;
+            clock1 = DateTime.Now.Ticks;
+            shell.ShellSort(copy);
+            clock2 = DateTime.Now.Ticks;
             Program.stoper.times["shell"][1] = clock2 - clock1;
 
             copy = quan;
-            clock1 = DateTime.Now.Millisecond;
+            clock1 = DateTime.Now.Ticks;
             comb.CombSort(copy);
-            clock2 = DateTime.Now.Millisecond;
+            clock2 = DateTime.Now.Ticks;
             Program.stoper.times["comb"][1] = clock2 - clock1;
 
             copy = quan;
-            clock1 = DateTime.Now.Millisecond;
+            clock1 = DateTime.Now.Ticks;
             bucket.BucketSort(copy,max_B);
-            clock2 = DateTime.Now.Millisecond;
+            clock2 = DateTime.Now.Ticks;
             Program.stoper.times["bucket"][1] = clock2 - clock1;
 
-            copy = quan;
-            clock1 = DateTime.Now.Millisecond;
-            quick.QuickSort(copy,0,quan.Length);
-            clock2 = DateTime.Now.Millisecond;
-            Program.stoper.times["quick"][1] = clock2 - clock1;
+            //copy = quan;
+            //clock1 = DateTime.Now.Millisecond;
+            //quick.QuickSort(copy,0,quan.Length);
+            //clock2 = DateTime.Now.Millisecond;
+            //Program.stoper.times["quick"][1] = clock2 - clock1;
 
             copy = quan;
-            clock1 = DateTime.Now.Millisecond;
+            clock1 = DateTime.Now.Ticks;
             bubble.BubbleSort(copy);
-            clock2 = DateTime.Now.Millisecond;
+            clock2 = DateTime.Now.Ticks;
             Program.stoper.times["bubble"][1] = clock2 - clock1;
 
 

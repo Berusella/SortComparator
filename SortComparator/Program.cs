@@ -49,7 +49,7 @@ namespace SortComparator
                 default:
                     break;
             }
-            Console.WriteLine("Thank you for useing me UwU");
+            Console.WriteLine("Thank you for using me UwU");
         }
 
     }
