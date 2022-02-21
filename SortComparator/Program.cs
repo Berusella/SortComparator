@@ -22,6 +22,7 @@ namespace SortComparator
                 case '2':
                     var select = new SpecialSelect();
                     select.Start();
+
                     break;
                 default:
                     break;
