@@ -11,9 +11,8 @@ namespace SortComparator
             var table = new TableCreation();
             var choice = new DoubleTrouble();
             var numberChoice = new Asker();
-            var randomNumbers = new QuanInizalition();
             var anwser = numberChoice.Ask();
-            var quan = randomNumbers.Quan(anwser);
+            var quan = new QuanInizalition(anwser);
             Console.WriteLine("m - mergeSort\nq - quickSort\ns - shellSort\nc - combSort\nb - bucketSort\nn - bubbleSort");
             var line = Console.Read();
             switch (line)

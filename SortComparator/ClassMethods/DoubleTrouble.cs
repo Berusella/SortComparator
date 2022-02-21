@@ -9,144 +9,71 @@ namespace SortComparator
 {
     class DoubleTrouble
     {
-        public DoubleTrouble()
+        public void caller(QuanInizalition quan, int i)
         {
 
+            MergeAnalyze(new QuanInizalition(quan), i);
+            ShellAnalyze(new QuanInizalition(quan), i);
+            CombAnalyze(new QuanInizalition(quan), i);
+            BucketAnalyze(new QuanInizalition(quan), i);
+            QuickAnalyze(new QuanInizalition(quan), i);
+            BubbleAnalyze(new QuanInizalition(quan), i);
         }
-        public void caller(int[] quan, int i)
+        public void ShellAnalyze(QuanInizalition quan, int i)
         {
-            var copy = quan;
-            //Task Merge = new Task(() =>
-            //{
-                MergeAnalyze(copy, i);
-            //});
-
-
-            copy = quan;
-            ShellAnalyze(copy, i);
-            copy = quan;
-            CombAnalyze(copy, i);
-            copy = quan;
-            BucketAnalyze(copy, i);
-            copy = quan;
-            QuickAnalyze(copy, i);
-            //Task Bubble = new Task(() =>
-            //{
-                copy = quan;
-                BubbleAnalyze(copy, i);
-            //});
-            //Merge.Start();
-            //Bubble.ConfigureAwait(Merge.IsCompleted);
-            //Bubble.Start();
-            /*
-            var merge = new Merge();
+            //var stopwatch = new Stopwatch();
             var shell = new Shell();
+            var clock1 = DateTime.Now.Ticks;
+            //stopwatch.Start();
+            shell.ShellSort(quan.Quan);
+            var clock2 = DateTime.Now.Ticks - clock1;
+            //stopwatch.Stop();
+            Program.stoper.times["shell"][i] = clock2;
+        }
+        public void CombAnalyze(QuanInizalition quan, int i)
+        {
             var comb = new Comb();
+            var clock1 = DateTime.Now.Ticks;
+            comb.CombSort(quan.Quan); //gap is permamently set to 3;
+            var clock2 = DateTime.Now.Ticks - clock1;
+            Program.stoper.times["comb"][i] = clock2;
+        }
+        public void BucketAnalyze(QuanInizalition quan, int i)
+        {
             var bucket = new Bucket();
-            var quick = new Quick();
+            var clock1 = DateTime.Now.Ticks;
+            bucket.BucketSort(quan.Quan, quan.MaxNum);
+            var clock2 = DateTime.Now.Ticks - clock1;
+            Program.stoper.times["bucket"][i] = clock2;
+        }
+        public void BubbleAnalyze(QuanInizalition quan, int i)
+        {
             var bubble = new Bubble();
-
-
-            var copy = quan;
-            double clockMerge1 = DateTime.Now.Ticks;
-            merge.SortMerge(copy, 0, quan.Length - 1);
-            double clockMerge2 = DateTime.Now.Ticks;
-            Program.stoper.times["merge"][i] = clockMerge2 - clockMerge1;
-
-            copy = quan;
-            var clockShell1 = DateTime.Now.Ticks;
-            shell.ShellSort(copy);
-            var clockShell2 = DateTime.Now.Ticks;
-            Program.stoper.times["shell"][i] = clockShell2 - clockShell1;
-
-            copy = quan;
-            var clockComb1 = DateTime.Now.Ticks;
-            comb.CombSort(copy); //gap is permamently set to 3;
-            var clockComb2 = DateTime.Now.Ticks;
-            Program.stoper.times["comb"][i] = clockComb2 - clockComb1;
-
-            copy = quan;
-            var clockBucket1 = DateTime.Now.Ticks;
-            bucket.BucketSort(copy, Runner.max_B);
-            var clockBucket2 = DateTime.Now.Ticks;
-            Program.stoper.times["bucket"][i] = clockBucket2 - clockBucket1;
-
-            copy = quan;
-            var clockQuick1 = DateTime.Now.Ticks;
-            quick.QuickSort(copy, 0, quan.Length - 1);
-            var clockQuick2 = DateTime.Now.Ticks;
-            Program.stoper.times["quick"][i] = clockQuick2 - clockQuick1;
-            //for (int i = 0; i < copy.Length; i++)
+            var clock1 = DateTime.Now.Ticks;
+            bubble.BubbleSort(quan.Quan);
+            var clock2 = DateTime.Now.Ticks - clock1;
+            Program.stoper.times["bubble"][i] = clock2;
+            //for (int j = 0; j < quan.Quan.Length; j++)
             //{
-            //    Console.WriteLine(copy[i]);
+            //    Console.WriteLine(quan.Quan[j]);
             //}
-
-            copy = quan;
-            var clockBubble1 = DateTime.Now.Ticks;
-            bubble.BubbleSort(copy);
-            var clockBubble2 = DateTime.Now.Ticks;
-            Program.stoper.times["bubble"][i] = clockBubble2 - clockBubble1; */
         }
-        public void ShellAnalyze(int[] quan, int i)
+        public void QuickAnalyze(QuanInizalition quan, int i)
         {
-            var stopwatch = new Stopwatch();
-            var shell = new Shell();
-            //var clockShell1 = DateTime.Now.Ticks;
-            stopwatch.Start();
-            shell.ShellSort(quan);
-            //var clockShell2 = DateTime.Now.Ticks - clockShell1;
-            stopwatch.Stop();
-            Program.stoper.times["shell"][i] = stopwatch.ElapsedTicks;
-        }
-        public void CombAnalyze(int[] quan, int i)
-        {
-            var stopwatch = new Stopwatch();
-            var comb = new Comb();
-            stopwatch.Start();
-            comb.CombSort(quan); //gap is permamently set to 3;
-            stopwatch.Stop();
-            Program.stoper.times["comb"][i] = stopwatch.ElapsedTicks;
-        }
-        public void BucketAnalyze(int[] quan, int i)
-        {
-            var stopwatch = new Stopwatch();
-            var bucket = new Bucket();
-            stopwatch.Start();
-            bucket.BucketSort(quan, Runner.max_B);
-            stopwatch.Stop();
-            Program.stoper.times["comb"][i] = stopwatch.ElapsedTicks;
-        }
-        public void BubbleAnalyze(int[] quan, int i)
-        {
-            var stopwatch = new Stopwatch();
-            var bubble = new Bubble();
-            stopwatch.Start();
-            bubble.BubbleSort(quan);
-            stopwatch.Stop();
-            Program.stoper.times["comb"][i] = stopwatch.ElapsedTicks;
-            for (int j = 0; j < quan.Length; j++)
-            {
-                Console.WriteLine(quan[j]);
-            }
-        }
-        public void QuickAnalyze(int[] quan, int i)
-        {
-            var stopwatch = new Stopwatch();
             var quick = new Quick();
-            stopwatch.Start();
-            quick.QuickSort(quan, 0, quan.Length - 1);
-            stopwatch.Stop();
-            Program.stoper.times["comb"][i] = stopwatch.ElapsedTicks;
+            var clock1 = DateTime.Now.Ticks;
+            quick.QuickSort(quan.Quan, 0, quan.Quan.Length - 1);
+            var clock2 = DateTime.Now.Ticks - clock1;
+            Program.stoper.times["quick"][i] = clock2;
             //for (int i = 0; i < copy.Length; i++)
         }
-        public void MergeAnalyze(int[] quan, int i)
+        public void MergeAnalyze(QuanInizalition quan, int i)
         {
-            var stopwatch = new Stopwatch();
             var merge = new Merge();
-            stopwatch.Start();
-            merge.SortMerge(quan, 0, quan.Length - 1);
-            stopwatch.Stop();
-            Program.stoper.times["comb"][i] = stopwatch.ElapsedTicks;
+            var clock1 = DateTime.Now.Ticks;
+            merge.SortMerge(quan.Quan, 0, quan.Quan.Length - 1);
+            var clock2 = DateTime.Now.Ticks - clock1;
+            Program.stoper.times["merge"][i] = clock2;
         }
     }
 }
