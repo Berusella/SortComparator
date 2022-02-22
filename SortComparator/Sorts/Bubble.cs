@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SortComparator
 {
-    class Bubble
+    class Bubble : ISort
     {
-       public void BubbleSort(QuanInizalition quan)  //zajęło nicałe 30 minut - całkiem prosty, ale wnerwiający. Straszliwie lubi wychodzić poza range
+       public void Sort(QuanInizalition quan)  //zajęło nicałe 30 minut - całkiem prosty, ale wnerwiający. Straszliwie lubi wychodzić poza range
         {
             var step = 0;
             var num = quan.Quan.Length;

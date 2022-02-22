@@ -15,30 +15,36 @@ namespace SortComparator
             var quan = new QuanInizalition(anwser);
             Console.WriteLine("m - mergeSort\nq - quickSort\ns - shellSort\nc - combSort\nb - bucketSort\nn - bubbleSort");
             var line = Console.Read();
+            var method = new List<SortMethod>();    
             switch (line)
             {
                 case 'm':
-                    choice.MergeAnalyze(quan, 3);
+                    method.Add(new SortMethod("merge", new Merge()));
                     break;
                 case 'q':
-                    choice.QuickAnalyze(quan, 3);
+                    method.Add(new SortMethod("quick", new Quick()));
                     break;
                 case 's':
-                    choice.ShellAnalyze(quan, 3);
+                    method.Add(new SortMethod("shell", new Shell()));
                     break;
                 case 'c':
-                    choice.CombAnalyze(quan, 3);
+                    method.Add(new SortMethod("comb", new Comb()));
                     break;
                 case 'b':
-                    choice.BucketAnalyze(quan, 3);
+                    method.Add(new SortMethod("bucket", new Bucket()));
                     break;
                 case 'n':
-                    choice.BubbleAnalyze(quan, 3);
+                    method.Add(new SortMethod("bubble", new Bubble()));
                     break;
                 default:
-                    break;
+                    return;
             }
-            table.Create(Program.stoper.times);
+            for (int i = 0; i < 3; i++)
+            {
+                method[0].Times.Add(0);
+            }
+            new DoubleTrouble().Caller(quan,method);
+            table.Create(method);
         }
     }
 }

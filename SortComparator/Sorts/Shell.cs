@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SortComparator
 {
-    class Shell
+    class Shell : ISort
     {
-        public void ShellSort(QuanInizalition quan)     //zajęło 47 minut. Bardzo prosty do zrobienia i całkiem przyjemny;
+        public void Sort(QuanInizalition quan)     //zajęło 47 minut. Bardzo prosty do zrobienia i całkiem przyjemny;
         {
             var h = 1;
             var num = quan.Quan.Length;

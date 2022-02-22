@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SortComparator
 {
-    class Comb
+    class Comb : ISort
     {
-        public void CombSort(QuanInizalition quan)    //zajął 30 minut - jak zrozumiałem co ma na celu to całkiem łatwo poszło. Problemem tylko był ten głupi gap, który był double.
+        public void Sort(QuanInizalition quan)    //zajął 30 minut - jak zrozumiałem co ma na celu to całkiem łatwo poszło. Problemem tylko był ten głupi gap, który był double.
         {
             var gap = 3.0;
             var shrink = 1.3;

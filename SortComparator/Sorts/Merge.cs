@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SortComparator
 {
-    class Merge
+    class Merge : ISort
     {
         public void Sort(QuanInizalition quan)
         {

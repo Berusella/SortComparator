@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SortComparator
 {
-    class Quick
+    class Quick : ISort
     {
         public void Sort(QuanInizalition quan)
         {
