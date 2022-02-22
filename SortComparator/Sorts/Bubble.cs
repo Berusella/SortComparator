@@ -4,22 +4,22 @@ using System.Text;
 
 namespace SortComparator
 {
-    class Bubble
+    class Bubble : ISort
     {
-       public void BubbleSort(int[] quan)  //zajęło nicałe 30 minut - całkiem prosty, ale wnerwiający. Straszliwie lubi wychodzić poza range
+       public void Sort(QuanInizalition quan)  //zajęło nicałe 30 minut - całkiem prosty, ale wnerwiający. Straszliwie lubi wychodzić poza range
         {
             var step = 0;
-            var num = quan.Length;
+            var num = quan.Quan.Length;
             var j = 1;
             while (j != num)
             {
                 try
                 {
-                    if (quan[j] < quan[j - 1])
+                    if (quan.Quan[j] < quan.Quan[j - 1])
                     {
-                        var clip = quan[j];
-                        quan[j] = quan[j - 1];
-                        quan[j - 1] = clip;
+                        var clip = quan.Quan[j];
+                        quan.Quan[j] = quan.Quan[j - 1];
+                        quan.Quan[j - 1] = clip;
                         j--;
                         step++;
                     }

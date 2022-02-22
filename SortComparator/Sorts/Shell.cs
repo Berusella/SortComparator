@@ -4,26 +4,26 @@ using System.Text;
 
 namespace SortComparator
 {
-    class Shell
+    class Shell : ISort
     {
-        public void ShellSort(int[] quan)     //zajęło 47 minut. Bardzo prosty do zrobienia i całkiem przyjemny;
+        public void Sort(QuanInizalition quan)     //zajęło 47 minut. Bardzo prosty do zrobienia i całkiem przyjemny;
         {
             var h = 1;
-            var num = quan.Length;
+            var num = quan.Quan.Length;
             for (; h < num; h = 3 * h + 1) ;
             h /= 9;
             while (h > 0)
             {
                 for (int j = num - h - 1; j >= 0; j--)
                 {
-                    var k = quan[j];
+                    var k = quan.Quan[j];
                     var m = j + h;
-                    while (m < num && k > quan[m])
+                    while (m < num && k > quan.Quan[m])
                     {
-                        quan[m - h] = quan[m];
+                        quan.Quan[m - h] = quan.Quan[m];
                         m += h;
                     }
-                    quan[m - h] = k;
+                    quan.Quan[m - h] = k;
                 }
                 h /= 3;
             }

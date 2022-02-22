@@ -4,13 +4,13 @@ using System.Text;
 
 namespace SortComparator
 {
-    class Bucket
+    class Bucket : ISort
     {
-        public void BucketSort(int[] quan, double max) //zajęło 1h i 48 minut - straszliwie cieżki do zrobienia według mnie. Dużo zmagania, by program robił poprawnie pudełka w zależności od wielkości tablicy
+        public void Sort(QuanInizalition quan) //zajęło 1h i 48 minut - straszliwie cieżki do zrobienia według mnie. Dużo zmagania, by program robił poprawnie pudełka w zależności od wielkości tablicy
         {
-            max /= 10;
+            var max = quan.MaxNum / 10;
             var buckets = new Dictionary<int, List<int>>();
-            BucketsCreation(max, quan, buckets);
+            BucketsCreation(max, quan.Quan, buckets);
             for (var i = 1; i < buckets.Keys.Count; i++)
             {
                 QuickSort(buckets[i], 0, buckets[i].Count - 1);
