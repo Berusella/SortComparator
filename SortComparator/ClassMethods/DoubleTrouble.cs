@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace SortComparator
 {
@@ -21,20 +19,25 @@ namespace SortComparator
         }
         public void ShellAnalyze(QuanInizalition quan, int i)
         {
-            //var stopwatch = new Stopwatch();
             var shell = new Shell();
             var clock1 = DateTime.Now.Ticks;
-            //stopwatch.Start();
-            shell.ShellSort(quan.Quan);
+            shell.ShellSort(quan);
             var clock2 = DateTime.Now.Ticks - clock1;
-            //stopwatch.Stop();
             Program.stoper.times["shell"][i] = clock2;
+        }
+        public void MergeAnalyze(QuanInizalition quan, int i)
+        {
+            var merge = new Merge();
+            var clock1 = DateTime.Now.Ticks;
+            merge.Sort(quan);
+            var clock2 = DateTime.Now.Ticks - clock1;
+            Program.stoper.times["merge"][i] = clock2;
         }
         public void CombAnalyze(QuanInizalition quan, int i)
         {
             var comb = new Comb();
             var clock1 = DateTime.Now.Ticks;
-            comb.CombSort(quan.Quan); //gap is permamently set to 3;
+            comb.CombSort(quan); //gap is permamently set to 3;
             var clock2 = DateTime.Now.Ticks - clock1;
             Program.stoper.times["comb"][i] = clock2;
         }
@@ -42,7 +45,7 @@ namespace SortComparator
         {
             var bucket = new Bucket();
             var clock1 = DateTime.Now.Ticks;
-            bucket.BucketSort(quan.Quan, quan.MaxNum);
+            bucket.BucketSort(quan);
             var clock2 = DateTime.Now.Ticks - clock1;
             Program.stoper.times["bucket"][i] = clock2;
         }
@@ -50,7 +53,7 @@ namespace SortComparator
         {
             var bubble = new Bubble();
             var clock1 = DateTime.Now.Ticks;
-            bubble.BubbleSort(quan.Quan);
+            bubble.BubbleSort(quan);
             var clock2 = DateTime.Now.Ticks - clock1;
             Program.stoper.times["bubble"][i] = clock2;
             //for (int j = 0; j < quan.Quan.Length; j++)
@@ -60,20 +63,11 @@ namespace SortComparator
         }
         public void QuickAnalyze(QuanInizalition quan, int i)
         {
-            var quick = new Quick();
             var clock1 = DateTime.Now.Ticks;
-            quick.QuickSort(quan.Quan, 0, quan.Quan.Length - 1);
+            new Quick().Sort(quan);
             var clock2 = DateTime.Now.Ticks - clock1;
             Program.stoper.times["quick"][i] = clock2;
-            //for (int i = 0; i < copy.Length; i++)
         }
-        public void MergeAnalyze(QuanInizalition quan, int i)
-        {
-            var merge = new Merge();
-            var clock1 = DateTime.Now.Ticks;
-            merge.SortMerge(quan.Quan, 0, quan.Quan.Length - 1);
-            var clock2 = DateTime.Now.Ticks - clock1;
-            Program.stoper.times["merge"][i] = clock2;
-        }
+        
     }
 }

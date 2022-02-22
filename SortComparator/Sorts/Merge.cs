@@ -5,8 +5,12 @@ using System.Text;
 namespace SortComparator
 {
     class Merge
-    {        
-        public void SortMerge(int[] numbers, int left, int right)          //zajęło 1h i 21 minut - musiałem posłużyć się pomocą do zrobienia go. Nie dokońca rozumiałem jego zamysł.
+    {
+        public void Sort(QuanInizalition quan)
+        {
+            SortMerge(quan.Quan, 0, quan.Quan.Length - 1);
+        }
+        private void SortMerge(int[] numbers, int left, int right)          //zajęło 1h i 21 minut - musiałem posłużyć się pomocą do zrobienia go. Nie dokońca rozumiałem jego zamysł.
         {
             int mid;
             if (right > left)
