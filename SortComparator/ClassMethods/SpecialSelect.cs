@@ -9,7 +9,6 @@ namespace SortComparator
         public void Start()
         {
             var table = new TableCreation();
-            var choice = new DoubleTrouble();
             var numberChoice = new Asker();
             var anwser = numberChoice.Ask();
             var quan = new QuanInizalition(anwser);
