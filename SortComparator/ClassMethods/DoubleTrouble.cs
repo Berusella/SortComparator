@@ -11,8 +11,10 @@ namespace SortComparator
         {
             foreach (var item in sortMethodList)
             {
+                var test = new QuanInizalition(quan);
+                //Array.Copy(quan.Quan, test, quan.Quan.Length);
                 var clock1 = DateTime.Now.Ticks;
-                item.Sort.Sort(quan);
+                item.Sort.Sort(test);
                 var clock2 = DateTime.Now.Ticks - clock1;
                 item.Times.Add(clock2);
             }
