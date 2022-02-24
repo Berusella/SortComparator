@@ -6,7 +6,7 @@ namespace SortComparator
 {
     class QuanInizalition
     {
-        public int[] Quan { get; }
+        public readonly int[] Quan;
         public int MaxNum { get; }
 
         public QuanInizalition(int num)
@@ -31,6 +31,10 @@ namespace SortComparator
             var quan = new int[source.Quan.Length];
             Quan = quan;
             Array.Copy(source.Quan, quan, source.Quan.Length);
+            //for (int i = 0; i < quan.Length - 1; i++)
+            //{
+            //    quan[i] = Quan[i];
+            //}
 
             //Quan = new int[source.Quan.Length];
             //Array.Copy(source.Quan, Quan, source.Quan.Length);
